@@ -21,13 +21,16 @@ public class AbstractMethods  {
     public Select getSelect(WebElement element){
         return  new Select(element);
     }
-    public static WebElement waitForElementClickable(WebElement element){
+    public  WebElement waitForElementClickable(WebElement element){
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
     public String getRandomName(){
          return  UUID.randomUUID().toString().substring(0,4)+"user";
     }
-    public int getRandomNumber(){
-        return UUID.randomUUID().toString().substring(0,8);
+    public long generateNumber(){
+        return (long) (Math.random()*9000000000L)+1000000000L;
+    }
+    public String getEmail(){
+        return UUID.randomUUID().toString().substring(0,5)+"@yopmail.com";
     }
 }

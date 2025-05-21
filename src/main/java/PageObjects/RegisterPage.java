@@ -35,13 +35,36 @@ public class RegisterPage extends AbstractMethods {
     @FindBy(name = "agree")
     WebElement agree;
 
+    public String getFirstName(){
+        String name = getRandomName();
+        System.out.println(name);
+        return name;
+    }
+    public String getLastName(){
+        String lastName = getRandomName();
+        System.out.println(lastName);
+        return lastName;
+    }
+    public long getPhoneNumber(){
+        long phoneNumber = generateNumber();
+        System.out.println(phoneNumber);
+        return phoneNumber;
+
+    }
+    public String getEmails(){
+        String email = getEmail();
+        System.out.println(email);
+        return email;
+    }
+
     public void enterRegisterForm(){
-        waitForElementClickable(firstName).sendKeys();
-        firstName.sendKeys(getRandomName());
-        lastName.sendKeys("df");
-        email.sendKeys("df");
-        telephone.sendKeys("dd");
-        getSelect(agree).selectByValue("1");
+        waitForElementClickable(firstName).sendKeys(getFirstName());
+       waitForElementClickable(lastName).sendKeys(getLastName());
+        waitForElementClickable(email).sendKeys(getEmails());
+       waitForElementClickable(telephone).sendKeys(String.valueOf(getPhoneNumber()));
+       waitForElementClickable(password).sendKeys(getFirstName());
+       waitForElementClickable(confirmPassword).sendKeys(getFirstName());
+       waitForElementClickable(agree).click();
 
     }
 

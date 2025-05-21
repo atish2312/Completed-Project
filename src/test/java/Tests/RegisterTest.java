@@ -17,5 +17,6 @@ public class RegisterTest  extends BaseTest {
         RegisterPage registerPage = dashBoardPage.registerPage();
         registerPage.enterRegisterForm();
 
+
     }
 }
