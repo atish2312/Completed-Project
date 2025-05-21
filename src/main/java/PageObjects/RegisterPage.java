@@ -35,40 +35,35 @@ public class RegisterPage extends AbstractMethods {
     @FindBy(name = "agree")
     WebElement agree;
 
-    public String getFirstName(){
-        String name = getRandomName();
-        System.out.println(name);
-        return name;
-    }
-    public String getLastName(){
-        String lastName = getRandomName();
-        System.out.println(lastName);
-        return lastName;
-    }
-    public long getPhoneNumber(){
-        long phoneNumber = generateNumber();
-        System.out.println(phoneNumber);
-        return phoneNumber;
+    @FindBy(xpath = "//input[@type='submit']")
+    WebElement continueButton;
 
-    }
-    public String getEmails(){
-        String email = getEmail();
-        System.out.println(email);
-        return email;
+    @FindBy(xpath = "//p[contains(text(),'Congratulations')]")
+    WebElement congratulations;
+
+    @FindBy(xpath = "//div[contains(text(),'E-Mail Address is already registered')]")
+    WebElement errorEmail;
+
+
+    public String gettext(){
+     String success =    congratulations.getText();
+      System.out.println(success);
+      return success;
     }
 
-    public void enterRegisterForm(){
-        waitForElementClickable(firstName).sendKeys(getFirstName());
-       waitForElementClickable(lastName).sendKeys(getLastName());
-        waitForElementClickable(email).sendKeys(getEmails());
-       waitForElementClickable(telephone).sendKeys(String.valueOf(getPhoneNumber()));
-       waitForElementClickable(password).sendKeys(getFirstName());
-       waitForElementClickable(confirmPassword).sendKeys(getFirstName());
+
+    public void enterRegisterForm(String enterFirstName , String enterLastName , String enterEmail , String telephoneNumber, String enterPassword, String enterConfirmPassword){
+        waitForElementClickable(firstName).sendKeys(enterFirstName);
+       waitForElementClickable(lastName).sendKeys(enterLastName);
+        waitForElementClickable(email).sendKeys(enterEmail);
+       waitForElementClickable(telephone).sendKeys(telephoneNumber);
+       waitForElementClickable(password).sendKeys(enterPassword);
+       waitForElementClickable(confirmPassword).sendKeys(enterConfirmPassword);
        waitForElementClickable(agree).click();
-
+       waitForElementClickable(continueButton).click();
     }
-
-
-
-
+    public boolean isDisplay(){
+        System.out.println(errorEmail.getText());
+      return   errorEmail.isDisplayed();
+    }
 }
