@@ -14,6 +14,8 @@ public class RegisterPage extends AbstractMethods {
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
+    @FindBy(xpath = "//a[text()='Continue']")
+    WebElement clickOnTheRegisterPage;
     @FindBy(name = "firstname")
     WebElement firstName;
 
@@ -53,6 +55,7 @@ public class RegisterPage extends AbstractMethods {
 
 
     public void enterRegisterForm(String enterFirstName , String enterLastName , String enterEmail , String telephoneNumber, String enterPassword, String enterConfirmPassword){
+        waitForElementClickable(clickOnTheRegisterPage).click();
         waitForElementClickable(firstName).sendKeys(enterFirstName);
        waitForElementClickable(lastName).sendKeys(enterLastName);
         waitForElementClickable(email).sendKeys(enterEmail);

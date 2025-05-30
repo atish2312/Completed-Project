@@ -1,20 +1,32 @@
 package TestComponent;
 
 import PageObjects.LandingPage;
+import Resources.ExtentReportNG;
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class BaseTest {
-    WebDriver driver;
+   public  WebDriver driver;
     Properties prop;
     public  LandingPage lp;
+   public  static ExtentTest test;
+    ExtentReportNG reportNG = new ExtentReportNG();
+    ExtentReports reports = reportNG.extentReports();
+
     public WebDriver intialize() throws IOException {
         FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/src/main/java/Resources/GlobalData.Properties");
          prop = new Properties();
@@ -22,6 +34,7 @@ public class BaseTest {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         return driver;
     }
     @BeforeMethod
@@ -30,9 +43,15 @@ public class BaseTest {
          lp = new LandingPage(driver,prop);
          return lp;
 
-
-
-
-
+    }
+    @AfterMethod
+    public void tearDown(){
+       driver.quit();
+    }
+    public String takeScreenShot(String testCaseName , WebDriver driver) throws IOException {
+        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        String screenshot = System.getProperty("user.dir")+"/Screenshots/"+testCaseName+".png";
+        FileUtils.copyFile(src,new File(screenshot));
+        return "../Screenshots/"+testCaseName + ".png";
     }
 }

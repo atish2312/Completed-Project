@@ -1,12 +1,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Opencart" verbose="1" >
+    <listeners>
+        <listener class-name="TestComponent.Listeners"/>
+    </listeners>
     <test name="register" >
         <classes>
-            <class name="Tests.RegisterTest">
-                <methods>
-                    <exclude name="validRegisterTestCase"/>
-                </methods>
-            </class>
+            <class name="Tests.RegisterTest"/>
+            <class name="Tests.LoginTest"/>
         </classes>
     </test>
 </suite>

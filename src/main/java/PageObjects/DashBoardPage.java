@@ -10,5 +10,9 @@ public class DashBoardPage {
     public RegisterPage registerPage(){
         return new RegisterPage(driver);
     }
+   public LoginPage loginPage(){
+        return new LoginPage(driver);
+    }
+
 
 }
