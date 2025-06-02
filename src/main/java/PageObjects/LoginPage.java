@@ -43,7 +43,7 @@ public class LoginPage extends AbstractMethods {
         System.out.println(errorDisplay.getText());
     }
     public void verifyMyAccountPage(){
-        checkPage.isDisplayed();
+      waitForElementDisplay(checkPage).isDisplayed();
         System.out.println(checkPage.getText());
     }
     public boolean errorDisplay(){

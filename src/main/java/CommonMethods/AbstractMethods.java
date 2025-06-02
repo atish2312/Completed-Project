@@ -1,5 +1,6 @@
 package CommonMethods;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,13 +16,17 @@ public class AbstractMethods  {
     public AbstractMethods(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
     }
-
     public Select getSelect(WebElement element){
         return  new Select(element);
     }
     public  WebElement waitForElementClickable(WebElement element){
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+    public WebElement waitForElementDisplay(WebElement element){
+        return  wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    public WebElement waitForElementClick(By element){
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 

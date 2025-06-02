@@ -1,6 +1,8 @@
 package TestComponent;
 
+import PageObjects.DashBoardPage;
 import PageObjects.LandingPage;
+import PageObjects.LoginPage;
 import Resources.ExtentReportNG;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -20,16 +22,16 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class BaseTest {
-   public  WebDriver driver;
+    public WebDriver driver;
     Properties prop;
-    public  LandingPage lp;
-   public  static ExtentTest test;
+    public LandingPage lp;
+    public static ExtentTest test;
     ExtentReportNG reportNG = new ExtentReportNG();
     ExtentReports reports = reportNG.extentReports();
 
     public WebDriver intialize() throws IOException {
-        FileInputStream file = new FileInputStream(System.getProperty("user.dir")+"/src/main/java/Resources/GlobalData.Properties");
-         prop = new Properties();
+        FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/Resources/GlobalData.Properties");
+        prop = new Properties();
         prop.load(file);
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
@@ -37,21 +39,34 @@ public class BaseTest {
         driver.manage().window().maximize();
         return driver;
     }
+
     @BeforeMethod
     public LandingPage landingPage() throws IOException {
         driver = intialize();
-         lp = new LandingPage(driver,prop);
-         return lp;
+        lp = new LandingPage(driver, prop);
+        return lp;
 
     }
+
     @AfterMethod
-    public void tearDown(){
-       driver.quit();
+    public void tearDown() {
+     //   driver.quit();
     }
-    public String takeScreenShot(String testCaseName , WebDriver driver) throws IOException {
-        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        String screenshot = System.getProperty("user.dir")+"/Screenshots/"+testCaseName+".png";
-        FileUtils.copyFile(src,new File(screenshot));
-        return "../Screenshots/"+testCaseName + ".png";
+
+    public String takeScreenShot(String testCaseName, WebDriver driver) throws IOException {
+        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String screenshot = System.getProperty("user.dir") + "/Screenshots/" + testCaseName + ".png";
+        FileUtils.copyFile(src, new File(screenshot));
+        return "../Screenshots/" + testCaseName + ".png";
     }
-}
+
+    public void loginCredentials() {
+        DashBoardPage dashBoardPage = lp.goTo();
+        LoginPage loginPage = dashBoardPage.loginPage();
+        String email = "Atish123@yopmail.com";
+        String password = "Atish123!";
+        loginPage.enterCredentials(email, password);
+        loginPage.verifyMyAccountPage();
+    }
+
+    }

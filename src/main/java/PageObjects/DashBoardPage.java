@@ -13,6 +13,10 @@ public class DashBoardPage {
    public LoginPage loginPage(){
         return new LoginPage(driver);
     }
+    public AddDeviceToCart addDeviceToCart(){
+        return new AddDeviceToCart(driver);
+    }
+
 
 
 }
