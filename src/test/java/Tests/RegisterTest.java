@@ -13,7 +13,7 @@ import java.io.IOException;
 public class RegisterTest  extends BaseTest {
     String firstName = "Atish";
     String lastName = "kumar";
-    String email = "Atish001@yopmail.com";
+    String email = "rjt@yopmail.com";
     String telephone = "+91977797979";
     String password = "Atish123!";
     String confirmPassword = "Atish123!";

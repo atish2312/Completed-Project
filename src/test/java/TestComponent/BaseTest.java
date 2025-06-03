@@ -63,7 +63,7 @@ public class BaseTest {
     public void loginCredentials() {
         DashBoardPage dashBoardPage = lp.goTo();
         LoginPage loginPage = dashBoardPage.loginPage();
-        String email = "Atish123@yopmail.com";
+        String email = "rjt@yopmail.com";
         String password = "Atish123!";
         loginPage.enterCredentials(email, password);
         loginPage.verifyMyAccountPage();
