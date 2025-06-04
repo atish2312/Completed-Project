@@ -3,6 +3,7 @@ package Tests;
 import PageObjects.AddDeviceToCart;
 import PageObjects.DashBoardPage;
 import TestComponent.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.awt.*;
@@ -19,6 +20,9 @@ public class ProductAddTest extends BaseTest {
         addDeviceToCart.verifyNavigation();
         addDeviceToCart.alreadyItem();
         addDeviceToCart.addCart();
-        addDeviceToCart.setAddToCartButton("Small","Checkbox 1","Hello Atish Kumar","Yellow","Atish this is text area");
+        Assert.assertTrue(addDeviceToCart.verifyTheNavigatePage());
+        addDeviceToCart.addingProduct();
+        addDeviceToCart.setClickOnTheCartButton();
+
     }
 }

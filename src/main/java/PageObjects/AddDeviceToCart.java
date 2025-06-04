@@ -88,31 +88,38 @@ public class AddDeviceToCart extends AbstractMethods {
     @FindBy(id = "input-option209")
     WebElement getTextArea;
 
-    public void setAddToCartButton(String sizeDevice, String checkbox , String text ,String colorOfProduct,String textArea) throws InterruptedException, AWTException {
-        WebElement intext =  waitForElementClick(By.xpath("//input[@id='input-option208']"));
-        waitForElementClick(By.xpath("//div[@id='input-option218']/div/label[contains(normalize-space(),'" + sizeDevice + "')]")).click();
-        waitForElementClick(By.xpath("//div[@id='input-option223']/div/label[contains(normalize-space(),'" + checkbox + "')]")).click();
-        getActions().click(intext).keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.DELETE).sendKeys(text).build().perform();
-        waitForElementClick(By.id("input-option217")).click();
-        List<WebElement> allOptions = driver.findElements(By.xpath("//select[@id='input-option217']/option"));
-        for(int i = 1 ; i< allOptions.size();i++){
-            driver.findElement(By.xpath("//option[contains(text(),'"+colorOfProduct+"')]")).click();
-            break;
-        }
-        waitForElementClickable(getTextArea).sendKeys(textArea);
-        driver.findElement(By.id("button-upload222")).click();
-        Robot robot = new Robot();
-        robot.delay(2000);
-        StringSelection selection = new StringSelection("C:\\Users\\appde\\OneDrive\\Desktop\\OpenCart\\opencart\\StoredData\\2.png");
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        Thread.sleep(200);
-        getAlert().accept();
-        waitForElementDisplay(getAddToCartButton).click();
+    @FindBy(xpath = "//h1[normalize-space()='Canon EOS 5D']")
+    WebElement verifyNavigation;
+
+    public boolean verifyTheNavigatePage(){
+       return verifyNavigation.isDisplayed();
     }
+    @FindBy(id = "input-option226")
+    WebElement displayAvailable;
+
+
+    public void addingProduct() {
+        String color = "Blue";
+        waitForElementClickable(displayAvailable).click();
+        List<WebElement> allOption = driver.findElements(By.xpath("//select[@id='input-option226']/option"));
+        for (int i = 0; i < allOption.size(); i++) {
+            if (allOption.get(i).getText().equalsIgnoreCase("Blue")) {
+                allOption.get(i).click();
+                break;
+            }
+        }
+    }
+    @FindBy(xpath = "//button[@id='button-cart']")
+    WebElement clickOnTheCartButton;
+
+    public void setClickOnTheCartButton(){
+        waitForElementClickable(clickOnTheCartButton).click();
+
+
+
+
+    }
+
+
+
 }
