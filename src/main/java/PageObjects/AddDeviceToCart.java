@@ -61,10 +61,8 @@ public class AddDeviceToCart extends AbstractMethods {
 
     }
 
-    public void addCart() {
+    public void addCart(String name) {
         List<WebElement> names = driver.findElements(By.xpath("//div[@class='caption']/h4"));
-        String name = "Apple Cinema 30";
-
         for (int i = 0; i < names.size(); i++) {
 
             String getName = names.get(i).getText();
@@ -92,14 +90,14 @@ public class AddDeviceToCart extends AbstractMethods {
     WebElement verifyNavigation;
 
     public boolean verifyTheNavigatePage(){
-       return verifyNavigation.isDisplayed();
+       return waitForElementDisplay(verifyNavigation).isDisplayed();
     }
     @FindBy(id = "input-option226")
     WebElement displayAvailable;
 
 
-    public void addingProduct() {
-        String color = "Blue";
+    public void addingProduct(String color) {
+
         waitForElementClickable(displayAvailable).click();
         List<WebElement> allOption = driver.findElements(By.xpath("//select[@id='input-option226']/option"));
         for (int i = 0; i < allOption.size(); i++) {
@@ -114,11 +112,14 @@ public class AddDeviceToCart extends AbstractMethods {
 
     public void setClickOnTheCartButton(){
         waitForElementClickable(clickOnTheCartButton).click();
-
-
-
-
     }
+    @FindBy(css = ".alert-success.alert-success")
+    WebElement verifySuccess;
+
+    public boolean getVerifyText(){
+       return waitForElementDisplay(verifySuccess).isDisplayed();
+    }
+
 
 
 

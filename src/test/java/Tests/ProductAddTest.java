@@ -17,12 +17,13 @@ public class ProductAddTest extends BaseTest {
         DashBoardPage dashBoardPage = lp.goTo();
         AddDeviceToCart addDeviceToCart = dashBoardPage.addDeviceToCart();
         addDeviceToCart.goToHomePage();
-        addDeviceToCart.verifyNavigation();
+       Assert.assertTrue(addDeviceToCart.verifyNavigation());
         addDeviceToCart.alreadyItem();
-        addDeviceToCart.addCart();
+        addDeviceToCart.addCart("Canon EOS 5D");
         Assert.assertTrue(addDeviceToCart.verifyTheNavigatePage());
-        addDeviceToCart.addingProduct();
+        addDeviceToCart.addingProduct("Blue");
         addDeviceToCart.setClickOnTheCartButton();
+        Assert.assertTrue(addDeviceToCart.getVerifyText());
 
     }
 }

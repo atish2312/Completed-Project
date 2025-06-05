@@ -7,6 +7,7 @@ public class ExtentReportNG {
 
     public  ExtentReports extentReports() {
         String path = System.getProperty("user.dir") + "/reports/index.html";
+
         ExtentSparkReporter sparkReporter = new ExtentSparkReporter(path);
         sparkReporter.config().setReportName("Opencart");
         sparkReporter.config().setDocumentTitle("Test Results");

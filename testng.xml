@@ -5,8 +5,8 @@
     </listeners>
     <test name="register" >
         <classes>
-<!--            <class name="Tests.RegisterTest"/>-->
-<!--            <class name="Tests.LoginTest"/>-->
+            <class name="Tests.RegisterTest"/>
+           <class name="Tests.LoginTest"/>
             <class name="Tests.ProductAddTest"/>
         </classes>
     </test>

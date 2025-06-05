@@ -1,5 +1,6 @@
 package TestComponent;
 
+import CommonMethods.AbstractMethods;
 import PageObjects.DashBoardPage;
 import PageObjects.LandingPage;
 import PageObjects.LoginPage;
@@ -15,6 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -30,6 +32,7 @@ public class BaseTest {
     ExtentReports reports = reportNG.extentReports();
 
     public WebDriver intialize() throws IOException {
+
         FileInputStream file = new FileInputStream(System.getProperty("user.dir") + "/src/main/java/Resources/GlobalData.Properties");
         prop = new Properties();
         prop.load(file);
@@ -44,13 +47,14 @@ public class BaseTest {
     public LandingPage landingPage() throws IOException {
         driver = intialize();
         lp = new LandingPage(driver, prop);
-        return lp;
 
+      System.out.println(System.getProperty("user.dir")+"\\Screenshots");
+        return lp;
     }
 
     @AfterMethod
     public void tearDown() {
-     //   driver.quit();
+       driver.quit();
     }
 
     public String takeScreenShot(String testCaseName, WebDriver driver) throws IOException {
@@ -67,6 +71,11 @@ public class BaseTest {
         String password = "Atish123!";
         loginPage.enterCredentials(email, password);
         loginPage.verifyMyAccountPage();
+    }
+    @BeforeSuite
+    public void deleteTheFolder(){
+        AbstractMethods op = new AbstractMethods(driver);
+        op.deleteFile(System.getProperty("user.dir")+"\\Screenshots");
     }
 
     }
