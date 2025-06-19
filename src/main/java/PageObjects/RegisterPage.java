@@ -57,16 +57,17 @@ public class RegisterPage extends AbstractMethods {
     @FindBy(xpath = "//div[@class='pull-right']")
     WebElement waitPageLoad;
 
-    public void enterRegisterForm(){
+    public void enterRegisterForm(String getFirstName, String getLastName, String getUserEmail, String getPhoneNumber , String UserPassword){
+
         waitForElementDisplay(getWaitPageLoad);
         waitForElementClickable(clickOnTheRegisterPage).click();
         waitForElementDisplay(waitPageLoad);
-        waitForElementClickable(firstName).sendKeys(userFirstName);
-       waitForElementClickable(lastName).sendKeys(userLastName);
-        waitForElementClickable(email).sendKeys(userEmail);
-       waitForElementClickable(getTelephone).sendKeys(userPhoneNumber);
-       waitForElementClickable(password).sendKeys(userPassword);
-       waitForElementClickable(confirmPassword).sendKeys(userPassword);
+        waitForElementClickable(firstName).sendKeys(getFirstName);
+       waitForElementClickable(lastName).sendKeys(getLastName);
+        waitForElementClickable(email).sendKeys(getUserEmail);
+       waitForElementClickable(getTelephone).sendKeys(getPhoneNumber);
+       waitForElementClickable(password).sendKeys(UserPassword);
+       waitForElementClickable(confirmPassword).sendKeys(UserPassword);
        waitForElementClickable(agree).click();
        waitForElementClickable(continueButton).click();
     }

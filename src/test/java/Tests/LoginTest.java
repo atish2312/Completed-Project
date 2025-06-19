@@ -8,8 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import static CommonMethods.AbstractMethods.userEmail;
-import static CommonMethods.AbstractMethods.userPassword;
+
 
 public class LoginTest extends BaseTest {
     protected LoginPage loginPage;

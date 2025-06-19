@@ -20,18 +20,14 @@ public class RegisterTest  extends BaseTest {
     String password = "Atish123!";
     String confirmPassword = "Atish123!";
 
-    @BeforeClass
-    public void intializeRandomCredentials(){
-        AbstractMethods ab= new AbstractMethods(driver);
-        ab.randomUserCredentials();
-    }
+
 
     @Test(priority = 1)
     public void validRegisterTestCase() throws IOException {
         DashBoardPage dashBoardPage = lp.goTo();
         test.log(Status.INFO,"Starting the valid test case");
         RegisterPage registerPage = dashBoardPage.registerPage();
-        registerPage.enterRegisterForm();
+        registerPage.enterRegisterForm(userFirstName,userLastName,userEmail,userPhoneNumber,userPassword);
         test.log(Status.INFO,"Enter the enter first name"+ firstName);
         test.log(Status.INFO,"Enter the enter last name" + lastName);
         test.log(Status.INFO,"The email is "+ email);
@@ -42,7 +38,7 @@ public class RegisterTest  extends BaseTest {
         DashBoardPage dashBoardPage = lp.goTo();
         test.log(Status.INFO,"Starting the valid test case");
         RegisterPage registerPage = dashBoardPage.registerPage();
-        registerPage.enterRegisterForm();
+        registerPage.enterRegisterForm(userFirstName,userLastName,userEmail,userPhoneNumber,userPassword);
         test.log(Status.INFO,"Enter the enter first name"+ firstName);
         test.log(Status.INFO,"Enter the enter last name" + lastName);
         test.log(Status.INFO,"The email is "+ email);

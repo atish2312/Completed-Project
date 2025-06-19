@@ -24,8 +24,6 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.UUID;
 
-import static CommonMethods.AbstractMethods.userEmail;
-import static CommonMethods.AbstractMethods.userPassword;
 
 public class BaseTest {
     public WebDriver driver;
@@ -42,7 +40,7 @@ public class BaseTest {
         prop.load(file);
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+      //  options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         return driver;
@@ -77,12 +75,26 @@ public class BaseTest {
         loginPage.enterCredentials(userEmail,userPassword);
         loginPage.verifyMyAccountPage();
     }
+
+    public static String userFirstName;
+    public static String userLastName;
+    public static String userEmail;
+    public static String userPhoneNumber;
+    public static String userPassword;
+
     @BeforeSuite
-    public void deleteTheFolder(){
+    public  void deleteTheFolderandrandomUserCredenials(){
         AbstractMethods op = new AbstractMethods(driver);
         op.deleteFile(System.getProperty("user.dir")+"\\Screenshots");
+            userFirstName = UUID.randomUUID().toString().substring(0, 5);
+            userLastName = UUID.randomUUID().toString().substring(0, 7);
+            userEmail = UUID.randomUUID().toString().substring(0, 7) + "@yopmail.com";
+            userPhoneNumber = UUID.randomUUID().toString().substring(0, 9);
+            userPassword = UUID.randomUUID().toString().substring(0, 10);
+            System.out.println(userEmail + "----------");
+        }
     }
 
-    }
+
 
 
