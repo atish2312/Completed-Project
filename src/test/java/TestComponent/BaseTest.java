@@ -42,7 +42,8 @@ public class BaseTest {
         prop.load(file);
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        driver = new ChromeDriver();
+        options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+        driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         return driver;
     }
