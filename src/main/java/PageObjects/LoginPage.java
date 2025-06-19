@@ -29,13 +29,13 @@ public class LoginPage extends AbstractMethods {
     @FindBy(xpath = "//h2[text()= 'My Account']")
     WebElement checkPage;
 
-    @FindBy(css = ".alert-dismissible")
+    @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
     WebElement getErrorDisplay;
 
 
-    public void enterCredentials(String enterEmail , String enterPassword){
-        waitForElementClickable(email).sendKeys(enterEmail);
-        waitForElementClickable(password).sendKeys(enterPassword);
+    public void enterCredentials(String userEmailGet , String userPasswordGet){
+        waitForElementClickable(email).sendKeys(userEmailGet);
+        waitForElementClickable(password).sendKeys(userPasswordGet);
         loginButton.click();
     }
     public void checkErrorDisplay(){
@@ -47,7 +47,7 @@ public class LoginPage extends AbstractMethods {
         System.out.println(checkPage.getText());
     }
     public boolean errorDisplay(){
-      return  getErrorDisplay.isDisplayed();
+      return waitForElementDisplay(getErrorDisplay).isDisplayed();
 
 
     }

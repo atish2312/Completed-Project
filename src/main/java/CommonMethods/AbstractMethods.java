@@ -68,7 +68,7 @@ public class AbstractMethods {
     public static String userEmail;
     public static String userPhoneNumber;
     public static String userPassword;
-    public static String userConfirmPassword;
+
 
 
     public void randomUserCredentials() {
@@ -77,7 +77,7 @@ public class AbstractMethods {
         userEmail = UUID.randomUUID().toString().substring(0, 7) + "@yopmail.com";
          userPhoneNumber = UUID.randomUUID().toString().substring(0, 9);
         userPassword = UUID.randomUUID().toString().substring(0, 10);
-        userConfirmPassword = UUID.randomUUID().toString().substring(0, 9);
+
         System.out.println(userEmail + "----------");
     }
 }

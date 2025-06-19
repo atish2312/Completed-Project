@@ -24,6 +24,9 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.UUID;
 
+import static CommonMethods.AbstractMethods.userEmail;
+import static CommonMethods.AbstractMethods.userPassword;
+
 public class BaseTest {
     public WebDriver driver;
     Properties prop;
@@ -70,7 +73,7 @@ public class BaseTest {
         LoginPage loginPage = dashBoardPage.loginPage();
         String email = "rjt@yopmail.com";
         String password = "Atish123!";
-        loginPage.enterCredentials(email, password);
+        loginPage.enterCredentials(userEmail,userPassword);
         loginPage.verifyMyAccountPage();
     }
     @BeforeSuite
