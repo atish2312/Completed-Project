@@ -13,13 +13,6 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class RegisterTest  extends BaseTest {
-    String firstName = "Atish";
-    String lastName = "kumar";
-    String email = "rjt@yopmail.com";
-    String telephone = "+91977797979";
-    String password = "Atish123!";
-    String confirmPassword = "Atish123!";
-
 
 
     @Test(priority = 1)
@@ -28,9 +21,9 @@ public class RegisterTest  extends BaseTest {
         test.log(Status.INFO,"Starting the valid test case");
         RegisterPage registerPage = dashBoardPage.registerPage();
         registerPage.enterRegisterForm(userFirstName,userLastName,userEmail,userPhoneNumber,userPassword);
-        test.log(Status.INFO,"Enter the enter first name"+ firstName);
-        test.log(Status.INFO,"Enter the enter last name" + lastName);
-        test.log(Status.INFO,"The email is "+ email);
+        test.log(Status.INFO,"Enter the enter first name"+ userFirstName);
+        test.log(Status.INFO,"Enter the enter last name" + userLastName);
+        test.log(Status.INFO,"The email is "+ userEmail);
         Assert.assertEquals(registerPage.gettext(),"Congratulations! Your new account has been successfully created!");
     }
     @Test(priority = 2)
@@ -39,9 +32,9 @@ public class RegisterTest  extends BaseTest {
         test.log(Status.INFO,"Starting the valid test case");
         RegisterPage registerPage = dashBoardPage.registerPage();
         registerPage.enterRegisterForm(userFirstName,userLastName,userEmail,userPhoneNumber,userPassword);
-        test.log(Status.INFO,"Enter the enter first name"+ firstName);
-        test.log(Status.INFO,"Enter the enter last name" + lastName);
-        test.log(Status.INFO,"The email is "+ email);
+        test.log(Status.INFO,"Enter the enter first name"+ userFirstName);
+        test.log(Status.INFO,"Enter the enter last name" + userLastName);
+        test.log(Status.INFO,"The email is "+ userEmail);
         Assert.assertTrue(registerPage.isDisplay());
     }
     }

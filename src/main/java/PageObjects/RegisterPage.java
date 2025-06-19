@@ -58,7 +58,6 @@ public class RegisterPage extends AbstractMethods {
     WebElement waitPageLoad;
 
     public void enterRegisterForm(String getFirstName, String getLastName, String getUserEmail, String getPhoneNumber , String UserPassword){
-
         waitForElementDisplay(getWaitPageLoad);
         waitForElementClickable(clickOnTheRegisterPage).click();
         waitForElementDisplay(waitPageLoad);
@@ -73,6 +72,6 @@ public class RegisterPage extends AbstractMethods {
     }
     public boolean isDisplay(){
         System.out.println(errorEmail.getText());
-      return   errorEmail.isDisplayed();
+      return waitForElementDisplay(errorEmail).isDisplayed();
     }
 }
