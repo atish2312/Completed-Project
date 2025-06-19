@@ -32,8 +32,12 @@ public class LoginPage extends AbstractMethods {
     @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
     WebElement getErrorDisplay;
 
+    @FindBy(xpath = "//h2[text()='Returning Customer']")
+    WebElement getWaitPageLoad;
+
 
     public void enterCredentials(String userEmailGet , String userPasswordGet){
+        waitForElementDisplay(getWaitPageLoad);
         waitForElementClickable(email).sendKeys(userEmailGet);
         waitForElementClickable(password).sendKeys(userPasswordGet);
         loginButton.click();

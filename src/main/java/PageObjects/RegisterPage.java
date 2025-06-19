@@ -52,9 +52,15 @@ public class RegisterPage extends AbstractMethods {
       System.out.println(success);
       return success;
     }
+    @FindBy(xpath = "//h2[text()='Returning Customer']")
+    WebElement getWaitPageLoad;
+    @FindBy(xpath = "//div[@class='pull-right']")
+    WebElement waitPageLoad;
 
     public void enterRegisterForm(){
+        waitForElementDisplay(getWaitPageLoad);
         waitForElementClickable(clickOnTheRegisterPage).click();
+        waitForElementDisplay(waitPageLoad);
         waitForElementClickable(firstName).sendKeys(userFirstName);
        waitForElementClickable(lastName).sendKeys(userLastName);
         waitForElementClickable(email).sendKeys(userEmail);
