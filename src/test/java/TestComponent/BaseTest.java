@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.UUID;
 
 public class BaseTest {
     public WebDriver driver;
@@ -79,3 +80,5 @@ public class BaseTest {
     }
 
     }
+
+

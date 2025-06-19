@@ -19,9 +19,10 @@ public class ProductAddTest extends BaseTest {
         addDeviceToCart.goToHomePage();
        Assert.assertTrue(addDeviceToCart.verifyNavigation());
         addDeviceToCart.alreadyItem();
-        addDeviceToCart.addCart("Canon EOS 5D");
+        addDeviceToCart.addCart("iPhone");
+       // Assert.assertTrue(addDeviceToCart.checkItemAdded());
         Assert.assertTrue(addDeviceToCart.verifyTheNavigatePage());
-        addDeviceToCart.addingProduct("Blue");
+     //   addDeviceToCart.addingProduct("Blue");
         addDeviceToCart.setClickOnTheCartButton();
         Assert.assertTrue(addDeviceToCart.getVerifyText());
 

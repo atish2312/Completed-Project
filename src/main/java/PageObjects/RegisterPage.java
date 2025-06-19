@@ -26,7 +26,7 @@ public class RegisterPage extends AbstractMethods {
     WebElement email;
 
     @FindBy(name = "telephone")
-    WebElement telephone;
+    WebElement getTelephone;
 
     @FindBy(name = "password")
     WebElement password;
@@ -53,15 +53,14 @@ public class RegisterPage extends AbstractMethods {
       return success;
     }
 
-
-    public void enterRegisterForm(String enterFirstName , String enterLastName , String enterEmail , String telephoneNumber, String enterPassword, String enterConfirmPassword){
+    public void enterRegisterForm(){
         waitForElementClickable(clickOnTheRegisterPage).click();
-        waitForElementClickable(firstName).sendKeys(enterFirstName);
-       waitForElementClickable(lastName).sendKeys(enterLastName);
-        waitForElementClickable(email).sendKeys(enterEmail);
-       waitForElementClickable(telephone).sendKeys(telephoneNumber);
-       waitForElementClickable(password).sendKeys(enterPassword);
-       waitForElementClickable(confirmPassword).sendKeys(enterConfirmPassword);
+        waitForElementClickable(firstName).sendKeys(userFirstName);
+       waitForElementClickable(lastName).sendKeys(userLastName);
+        waitForElementClickable(email).sendKeys(userEmail);
+       waitForElementClickable(getTelephone).sendKeys(userPhoneNumber);
+       waitForElementClickable(password).sendKeys(userPassword);
+       waitForElementClickable(confirmPassword).sendKeys(userPassword);
        waitForElementClickable(agree).click();
        waitForElementClickable(continueButton).click();
     }

@@ -70,11 +70,17 @@ public class AddDeviceToCart extends AbstractMethods {
             String formattedName = nameFormatted[0].trim();
             System.out.println(formattedName);
             if (name.equalsIgnoreCase(formattedName)) {
-                driver.findElements(By.xpath("//div[@class='button-group']/button[1]")).get(i).click();
+                driver.findElements(By.xpath("//div[@class='image']")).get(i).click();
                 break;
             }
         }
 
+    }
+    @FindBy(css = ".alert-success")
+    WebElement checkItem;
+
+    public boolean checkItemAdded(){
+        return  checkItem.isDisplayed();
     }
 
     @FindBy(xpath = "//div[@class='form-group']/button")
@@ -86,27 +92,28 @@ public class AddDeviceToCart extends AbstractMethods {
     @FindBy(id = "input-option209")
     WebElement getTextArea;
 
-    @FindBy(xpath = "//h1[normalize-space()='Canon EOS 5D']")
+    @FindBy(xpath = "//h1[normalize-space()='iPhone']")
     WebElement verifyNavigation;
 
     public boolean verifyTheNavigatePage(){
        return waitForElementDisplay(verifyNavigation).isDisplayed();
     }
+
     @FindBy(id = "input-option226")
     WebElement displayAvailable;
 
 
-    public void addingProduct(String color) {
-
-        waitForElementClickable(displayAvailable).click();
-        List<WebElement> allOption = driver.findElements(By.xpath("//select[@id='input-option226']/option"));
-        for (int i = 0; i < allOption.size(); i++) {
-            if (allOption.get(i).getText().equalsIgnoreCase("Blue")) {
-                allOption.get(i).click();
-                break;
-            }
-        }
-    }
+//    public void addingProduct(String color) {
+//
+//        waitForElementClickable(displayAvailable).click();
+//        List<WebElement> allOption = driver.findElements(By.xpath("//select[@id='input-option226']/option"));
+//        for (int i = 0; i < allOption.size(); i++) {
+//            if (allOption.get(i).getText().equalsIgnoreCase("Blue")) {
+//                allOption.get(i).click();
+//                break;
+//            }
+//        }
+//    }
     @FindBy(xpath = "//button[@id='button-cart']")
     WebElement clickOnTheCartButton;
 
